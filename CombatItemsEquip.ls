@@ -2684,8 +2684,8 @@ on CurrencyDrop(me, movie, group, user, fullmsg)
 
  
   Global ItemMapDropQueue
-   
    set TheDat = string(fullmsg.content)
+
    set the itemdelimiter = ":"
    set TheItem = item 1 of TheDat
    put TheItem
