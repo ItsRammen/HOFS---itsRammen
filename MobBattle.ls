@@ -18,7 +18,6 @@ Global abDefense, abParry, MyName
 
 on RunMobBattle(MyBattle, ThisMap, TheBattleFile, BattleDetailDat, StartingHireling )
 
-put "Running Mob Battle" & MyBattle & " TheBattleFile:" & TheBattleFile & "BattleDetail:" & BattleDetailDat & "StartHire:" & StartingHireling
  if char 1 of ThisMap = "@" then put "" into char 1 of ThisMap
 
  set the itemdelimiter = "_"
@@ -198,7 +197,7 @@ put "Running Mob Battle" & MyBattle & " TheBattleFile:" & TheBattleFile & "Battl
      set MobsTrueH = MyH / 32 + 1
      set MobsTrueV = MyV / 32 + 1
 
-     set BlockedFile = file("C:\BNewWorldsOnlineServer\DAT\ZBLOCKS\" & ThisMapo & ".txt").read
+     set BlockedFile = file("DAT\ZBLOCKS\" & ThisMapo & ".txt").read
 
      set BadMove = FALSE
 

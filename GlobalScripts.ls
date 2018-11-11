@@ -1931,7 +1931,6 @@ on IncomingMessage (me, movie, group, user, fullMsg)
 
 
    "imacowardyesitstrue":
-   put "we got it "
       RunAwayPussy(me, movie, group, user, fullmsg)
 
    "stopwatching":

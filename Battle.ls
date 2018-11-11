@@ -65,6 +65,7 @@ end
 
 on BattleClick(me, movie, group, user, fullmsg)
 
+put fullmsg.content
  put "we did this too"
  set MyName = string(user.name)
  set TheDat = string(fullmsg.content)
@@ -269,7 +270,7 @@ on BattleClick(me, movie, group, user, fullmsg)
 
    set TheOneWhosHitting = ThisHireling
 
-   set ItemDATA = file("DAT\\HIRELINGDAT\" & SpellSelected & ".txt").read
+   set ItemDATA = file("DAT\HIRELINGDAT\" & SpellSelected & ".txt").read
 
    set TheLocH = TheX * 32 - 16
    set TheLocV = TheY * 32
@@ -687,7 +688,7 @@ on BattleClick(me, movie, group, user, fullmsg)
 
     set TrappedCName = item 1 of SoulTrapped 
 
-    set TrapBackUp = file("DAT\\HirelingDAT\" & TrappedCName & ".txt").read
+    set TrapBackUp = file("DAT\HirelingDAT\" & TrappedCName & ".txt").read
     set TrapBackUp = line 17 of TrapBackUp 
     set the itemdelimiter = "\"
     set TrapBackUp = item 2 of TrapBackUp
@@ -1534,7 +1535,7 @@ on BattleClick(me, movie, group, user, fullmsg)
 
    set DropAHireling = FALSE
 
-   set BlockedFile= file("DAT\\ZBLOCKS\" & ThisMapo & ".txt").read
+   set BlockedFile= file("DAT\ZBLOCKS\" & ThisMapo & ".txt").read
   
   set the itemdelimiter = ":"
   set TheLine = item NumericY of BlockedFile
@@ -1560,7 +1561,7 @@ on BattleClick(me, movie, group, user, fullmsg)
 
     if BadStopForSpwan  = FALSE then
      set DropAHireling = TRUE
-     set HirelingToDrop = file("DAT\\HIRELINGDAT\" & WhoToSummon & ".txt").read
+     set HirelingToDrop = file("DAT\HIRELINGDAT\" & WhoToSummon & ".txt").read
      set DropHirelingDAT = line 17 of HirelingToDrop
      set the itemdelimiter = "\"
      set DropHirelingDAT = item 2 of DropHirelingDAT 
@@ -1796,7 +1797,7 @@ on BattleClick(me, movie, group, user, fullmsg)
 
     if BadStopForSpwan  = FALSE then
      set DropAHireling = TRUE
-     set HirelingToDrop = file("DAT\\HIRELINGDAT\Undead.txt").read
+     set HirelingToDrop = file("DAT\HIRELINGDAT\Undead.txt").read
      set DropHirelingDAT = line 17 of HirelingToDrop
      set the itemdelimiter = "\"
      set DropHirelingDAT = item 2 of DropHirelingDAT 
@@ -1975,7 +1976,7 @@ on BattleClick(me, movie, group, user, fullmsg)
          if HisOwna = "Computer" then
            set the itemdelimiter = ":"
            set HirelingCleass = item 1 of HirelingToUseItemOn
-           set HireeDAT = file("DAT\\HIRELINGDAT\" & HirelingCleass & ".txt").read
+           set HireeDAT = file("DAT\HIRELINGDAT\" & HirelingCleass & ".txt").read
            set HireeDAT = line 12 of HireeDAT
            set the itemdelimiter = "\"
            set HireeDAT = item 2 of HireeDAT
@@ -1990,7 +1991,7 @@ on BattleClick(me, movie, group, user, fullmsg)
            set AttackCurSP = integer(item 6 of ThisHireling)
            set AttackMaxSP = integer(item 7 of ThisHireling)
            set AttackerClazz  = item 1 of ThisHireling
-           set HirelingHitFile = file("DAT\\HIRELINGDAT\" & AttackerClazz & ".txt").read
+           set HirelingHitFile = file("DAT\HIRELINGDAT\" & AttackerClazz & ".txt").read
            set LevelUp = 2
 
            set MobExp = MobExp - uMyLevel
@@ -2226,7 +2227,7 @@ on BattleClick(me, movie, group, user, fullmsg)
    set the itemdelimiter = ":"
    set zMobLizt = item 6 of NextArenaMOBS 
    
-   set BlockedFile = file("DAT\\ZBLOCKS\" & ThisMapo & ".txt").read
+   set BlockedFile = file("DAT\ZBLOCKS\" & ThisMapo & ".txt").read
 
    repeat with WhatThisMob = 1 to 13
     set the itemdelimiter = "/"
@@ -2254,7 +2255,7 @@ on BattleClick(me, movie, group, user, fullmsg)
        if CheChrr = "X" then set ItsVeryBAD = TRUE
 
        if ItsVeryBAD = FALSE then
-        set MobHirelingFile = file("DAT\\HIRELINGDAT\" & ThisArenaHirelingName  & ".txt").read
+        set MobHirelingFile = file("DAT\HIRELINGDAT\" & ThisArenaHirelingName  & ".txt").read
         set MobHirelingStartingLevel = line 16 of MobHirelingFile
         set HPInc = line 10 of MobHirelingFile
         set SPInc = line 11 of MobHirelingFile
@@ -2638,7 +2639,7 @@ on BattleClick(me, movie, group, user, fullmsg)
            SetProp MobsMap, Symbol(WarpBackMap), TheMobs
            set HirelingDeleteQueue = HirelingDeleteQueue & WarpBackMap & "-" & WarpBackMob & "-" & "20" & ":"
 
-           set HireFile = file("DAT\\HIRELINGDAT\" & CapturedHireling & ".txt").read  -- line 17
+           set HireFile = file("DAT\HIRELINGDAT\" & CapturedHireling & ".txt").read  -- line 17
            set HireFile = line 17 of HireFile
            set the itemdelimiter = "\"
            set HireFile = item 2 of HireFile 
@@ -2739,7 +2740,7 @@ on BattleClick(me, movie, group, user, fullmsg)
 
     set ItemToUse = item ObjNum of MyInv
 
-    set ItemDATA = file("DAT\\HIRELINGDAT\" & ItemToUse & ".txt").read
+    set ItemDATA = file("DAT\HIRELINGDAT\" & ItemToUse & ".txt").read
 
     set LegalUses = FALSE
     if ItemToUse contains "Potion" then set LegalUses = TRUE
@@ -2851,7 +2852,7 @@ on BattleClick(me, movie, group, user, fullmsg)
    set BadMove = FALSE
    set the itemdelimiter = ":"
 
-   set BlockedFile = file("DAT\\ZBLOCKS\" & ThisMapo & ".txt").read
+   set BlockedFile = file("DAT\ZBLOCKS\" & ThisMapo & ".txt").read
    set TheLine = item TheY of BlockedFile
    set TheBlockedChar = char TheX of TheLine
 
@@ -3221,7 +3222,7 @@ on BattleClick(me, movie, group, user, fullmsg)
   set HisRange = 1
 
   if WeapinEquipped <> "" then
-    set WeaponFilez = file("DAT\\HIRELINGDAT\" & WeapinEquipped & ".txt").read
+    set WeaponFilez = file("DAT\HIRELINGDAT\" & WeapinEquipped & ".txt").read
     set WeaponRange = line 10 of WeaponFilez 
     set the itemdelimiter = "\"
     set WeaponRange = item 2 of WeaponRange
@@ -3233,7 +3234,7 @@ on BattleClick(me, movie, group, user, fullmsg)
   if RequiresProj = TRUE then
     set CantAttackSorry = TRUE
     if SheeldEquipped <> "" then
-      set SheeldFilez = file("DAT\\HIRELINGDAT\" & SheeldEquipped & ".txt").read
+      set SheeldFilez = file("DAT\HIRELINGDAT\" & SheeldEquipped & ".txt").read
       if SheeldFilez contains "\ITS_ARROW=TRUE" then set CantAttackSorry = FALSE
     end if
   end if
@@ -3253,7 +3254,7 @@ on BattleClick(me, movie, group, user, fullmsg)
   set AttackIsLegal = 0
   set HowFarIShot = 1
 
-  set MapBlox = file("DAT\\zOriginalBlocks\b" & ThisMapo & ".txt").read
+  set MapBlox = file("DAT\zOriginalBlocks\b" & ThisMapo & ".txt").read
 
   set bTheX = TheX
   set bTheY = TheY
@@ -3446,14 +3447,14 @@ on BattleClick(me, movie, group, user, fullmsg)
        set HirelingAttackClass = item 1 of TheOneWhosHitting
        set HirelingAttackStr = integer(item 10 of TheOneWhosHitting)
 
-       set HirelingHitFile = file("DAT\\HIRELINGDAT\" & HirelingHitClass & ".txt").read
-       set HirelingAttackFile = file("DAT\\HIRELINGDAT\" & HirelingAttackClass & ".txt").read
+       set HirelingHitFile = file("DAT\HIRELINGDAT\" & HirelingHitClass & ".txt").read
+       set HirelingAttackFile = file("DAT\HIRELINGDAT\" & HirelingAttackClass & ".txt").read
 
        set WeHaveProjectile = FALSE
        set ItsBow = FALSE
 
        if ShieldHand <> "" then
-          set ShieldOrProjectile = file("DAT\\HIRELINGDAT\" & ShieldHand & ".txt").read
+          set ShieldOrProjectile = file("DAT\HIRELINGDAT\" & ShieldHand & ".txt").read
           if ShieldOrProjectile contains "\ATTACK_VALUE=" then set WeHaveProjectile = TRUE
        end if
 
@@ -3467,7 +3468,7 @@ on BattleClick(me, movie, group, user, fullmsg)
         if WhichArmor = 5 then set CurArmor = Armor5
         
         if CurArmor <> "" then
-         set ArmorDATFile = file("DAT\\HIRELINGDAT\" & CurArmor & ".txt").read
+         set ArmorDATFile = file("DAT\HIRELINGDAT\" & CurArmor & ".txt").read
          if ArmorDATFile contains "\ATTACK_VALUE=" then set ArmorDATFile = VOID
 
          if ArmorDATFile <> VOID then
@@ -3511,7 +3512,7 @@ on BattleClick(me, movie, group, user, fullmsg)
        set AttackAmount = integer(item 2 of AttackAmount)
 
        if WeaponUsed <> "" then
-         set WeaponDAT = file("DAT\\HIRELINGDAT\" & WeaponUsed & ".txt").read
+         set WeaponDAT = file("DAT\HIRELINGDAT\" & WeaponUsed & ".txt").read
          set WeaponAttackValue = line 1 of WeaponDAT
          set the itemdelimiter = "\"
          set WeaponAttackValue = item 2 of WeaponAttackValue
@@ -3522,7 +3523,7 @@ on BattleClick(me, movie, group, user, fullmsg)
 
          if WeaponDAT contains "Its_Bow=TRUE" then
            if WeHaveProjectile = TRUE then
-           set MyShieldDAT = file("DAT\\HIRELINGDAT\" & ShieldHand & ".txt").read
+           set MyShieldDAT = file("DAT\HIRELINGDAT\" & ShieldHand & ".txt").read
            set ArrowAttackValue = line 1 of MyShieldDAT 
            set the itemdelimiter = "\"
            set ArrowAttackValue = item 2 of ArrowAttackValue
@@ -4007,7 +4008,7 @@ on BattleClick(me, movie, group, user, fullmsg)
    set the itemdelimiter = ":"
    set zMobLizt = item 6 of NextArenaMOBS 
    
-   set BlockedFile = file("DAT\\ZBLOCKS\" & ThisMapo & ".txt").read
+   set BlockedFile = file("DAT\ZBLOCKS\" & ThisMapo & ".txt").read
 
    repeat with WhatThisMob = 1 to 13
     set the itemdelimiter = "/"
@@ -4033,7 +4034,7 @@ on BattleClick(me, movie, group, user, fullmsg)
        if CheChrr = "X" then set ItsVeryBAD = TRUE
 
        if ItsVeryBAD = FALSE then
-        set MobHirelingFile = file("DAT\\HIRELINGDAT\" & ThisArenaHirelingName  & ".txt").read
+        set MobHirelingFile = file("DAT\HIRELINGDAT\" & ThisArenaHirelingName  & ".txt").read
         set MobHirelingStartingLevel = line 16 of MobHirelingFile
         set HPInc = line 10 of MobHirelingFile
         set SPInc = line 11 of MobHirelingFile
@@ -4536,7 +4537,7 @@ on BattleClick(me, movie, group, user, fullmsg)
            SetProp MobsMap, Symbol(WarpBackMap), TheMobs
            set HirelingDeleteQueue = HirelingDeleteQueue & WarpBackMap & "-" & WarpBackMob & "-" & "20" & ":"
 
-           set HireFile = file("DAT\\HIRELINGDAT\" & CapturedHireling & ".txt").read  -- line 17
+           set HireFile = file("DAT\HIRELINGDAT\" & CapturedHireling & ".txt").read  -- line 17
            set HireFile = line 17 of HireFile
            set the itemdelimiter = "\"
            set HireFile = item 2 of HireFile 
@@ -4662,7 +4663,7 @@ on BattleClick(me, movie, group, user, fullmsg)
    set the itemdelimiter = ":"
    set zMobLizt = item 6 of NextArenaMOBS 
    
-   set BlockedFile = file("DAT\\ZBLOCKS\" & ThisMapo & ".txt").read
+   set BlockedFile = file("DAT\ZBLOCKS\" & ThisMapo & ".txt").read
 
    repeat with WhatThisMob = 1 to 13
     set the itemdelimiter = "/"
@@ -4688,7 +4689,7 @@ on BattleClick(me, movie, group, user, fullmsg)
        if CheChrr = "X" then set ItsVeryBAD = TRUE
 
        if ItsVeryBAD = FALSE then
-        set MobHirelingFile = file("DAT\\HIRELINGDAT\" & ThisArenaHirelingName  & ".txt").read
+        set MobHirelingFile = file("DAT\HIRELINGDAT\" & ThisArenaHirelingName  & ".txt").read
         set MobHirelingStartingLevel = line 16 of MobHirelingFile
         set HPInc = line 10 of MobHirelingFile
         set SPInc = line 11 of MobHirelingFile
@@ -4743,7 +4744,7 @@ on BattleClick(me, movie, group, user, fullmsg)
 
   set the itemdelimiter = ":"
 
-  set BlockedFile = file("DAT\\ZBLOCKS\" & ThisMapo & ".txt").read
+  set BlockedFile = file("DAT\ZBLOCKS\" & ThisMapo & ".txt").read
 
   if CurrentH < TheLocH then set WhichDir = "E"
   if CurrentH > TheLocH then set WhichDir = "W"
@@ -4954,7 +4955,7 @@ on BattleClick(me, movie, group, user, fullmsg)
   set HisRange = 1
 
   if HisWeapon <> "" then
-   set WeaponFilez = file("DAT\\HIRELINGDAT\" & HisWeapon & ".txt").read
+   set WeaponFilez = file("DAT\HIRELINGDAT\" & HisWeapon & ".txt").read
 
    set WeaponRange = line 10 of WeaponFilez 
    set the itemdelimiter = "\"
@@ -5052,7 +5053,7 @@ on BattleClick(me, movie, group, user, fullmsg)
       set HrSelClass = item 1 of ThisGuyThatsUp
       set HisCondiez = item 19 of ThisGuyThatsUp
       set HisWeapon = item 13 of ThisGuyThatsUp
-      set MoveAmount = file("DAT\\HIRELINGDAT\" & HrSelClass & ".txt").read
+      set MoveAmount = file("DAT\HIRELINGDAT\" & HrSelClass & ".txt").read
       set MoveAmount = line 7 of MoveAmount
       set the itemdelimiter = "\"
       set MoveAmount = item 2 of MoveAmount
@@ -5070,7 +5071,7 @@ on BattleClick(me, movie, group, user, fullmsg)
       set HisRange = 1
 
       if HisWeapon <> "" then
-       set WeaponFilez = file("DAT\\HIRELINGDAT\" & HisWeapon & ".txt").read
+       set WeaponFilez = file("DAT\HIRELINGDAT\" & HisWeapon & ".txt").read
        set WeaponRange = line 10 of WeaponFilez 
        set the itemdelimiter = "\"
        set WeaponRange = item 2 of WeaponRange
@@ -5107,7 +5108,7 @@ on BattleClick(me, movie, group, user, fullmsg)
       set the itemdelimiter = ":"
       set HrSelClass = item 1 of ThisGuyThatsUp
       set HisCondiez = item 19 of ThisGuyThatsUp
-      set MoveAmount = file("DAT\\HIRELINGDAT\" & HrSelClass & ".txt").read
+      set MoveAmount = file("DAT\HIRELINGDAT\" & HrSelClass & ".txt").read
       set MoveAmount = line 7 of MoveAmount
       set the itemdelimiter = "\"
       set MoveAmount = item 2 of MoveAmount
@@ -5156,7 +5157,7 @@ on BattleClick(me, movie, group, user, fullmsg)
       set HrSelClass = item 1 of ThisGuyThatsUp
       set HisWeapon = item 13 of ThisGuyThatsUp
       set HisCondiez = item 19 of ThisGuyThatsUp
-      set MoveAmount = file("DAT\\HIRELINGDAT\" & HrSelClass & ".txt").read
+      set MoveAmount = file("DAT\HIRELINGDAT\" & HrSelClass & ".txt").read
       set MoveAmount = line 7 of MoveAmount
       set the itemdelimiter = "\"
       set MoveAmount = item 2 of MoveAmount
@@ -5176,7 +5177,7 @@ on BattleClick(me, movie, group, user, fullmsg)
       set HisRange = 1
 
       if HisWeapon <> "" then
-       set WeaponFilez = file("DAT\\HIRELINGDAT\" & HisWeapon & ".txt").read
+       set WeaponFilez = file("DAT\HIRELINGDAT\" & HisWeapon & ".txt").read
        set WeaponRange = line 10 of WeaponFilez 
        set the itemdelimiter = "\"
 
@@ -5400,7 +5401,9 @@ if ActualMapNum contains "x1522y1490" then Set ActualMapNum = "Traitor's Valley"
    end if
 
 
-   set MapIBattleAt = file("DAT\HIRELINGDAT\" & MyBattle & ".txt").read
+
+   set MapIBattleAt = file("DAT\BattleWarps\" & MyBattle & ".txt").read
+
 
 
    set MyHirelings = GetProp(Hirelings, Symbol(MyName))
@@ -5802,7 +5805,7 @@ put BattleFileDAT
       set the itemdelimiter = ":"
       set HrSelClass = item 1 of ThisGuyThatsUp
       set HisCondiez = item 19 of THisGuyThatsUp
-      set MoveAmount = file("DAT\\HIRELINGDAT\" & HrSelClass & ".txt").read
+      set MoveAmount = file("DAT\HIRELINGDAT\" & HrSelClass & ".txt").read
       set MoveAmount = line 7 of MoveAmount
       set the itemdelimiter = "\"
       set MoveAmount = item 2 of MoveAmount
@@ -5828,7 +5831,7 @@ put BattleFileDAT
        set eBattler = "@" & ThisMap
        myPMovie.sendMessage(eBattler, "BattleQueue", BattleFileDAT) 
       end if
- put "did we get here? - RunMobBattle"
+ 
       RunMobBattle(MyBattle, ThisMap, TheBattleFile, BattleDetailDat, StartingHireling )
       exit
      end if
@@ -6289,7 +6292,7 @@ if BattleStats[Symbol(TheDat)] = VOID then  --------------------@@@@@@@@@@@@@@@@
     set MobX = item 2 of ThisMob
     set MobY = item 3 of ThisMob
 
-    set MobHirelingFile = file("DAT\\HIRELINGDAT\" & MobClass & ".txt").read
+    set MobHirelingFile = file("DAT\HIRELINGDAT\" & MobClass & ".txt").read
     set MobHirelingStartingLevel = line 16 of MobHirelingFile
     set HPInc = line 10 of MobHirelingFile
     set SPInc = line 11 of MobHirelingFile
@@ -6385,7 +6388,7 @@ if BattleStats[Symbol(TheDat)] = VOID then  --------------------@@@@@@@@@@@@@@@@
      set HrSelClass = item 1 of HirelingOne
      set HrCurHP = integer(item 4 of HirelingOne)
      if HrCurHP < 1 then next repeat
-     set MoveAmount = file("DAT\\HIRELINGDAT\" & HrSelClass & ".txt").read
+     set MoveAmount = file("DAT\HIRELINGDAT\" & HrSelClass & ".txt").read
      set MoveAmount = line 7 of MoveAmount
      set the itemdelimiter = "\"
      set MoveAmount = item 2 of MoveAmount
@@ -6785,7 +6788,7 @@ end if
       if HisWeapon <> "" then
 
 
-       set WeaponFilez = file("DAT\\HIRELINGDAT\" & HisWeapon & ".txt").read
+       set WeaponFilez = file("DAT\HIRELINGDAT\" & HisWeapon & ".txt").read
        set WeaponRange = line 10 of WeaponFilez 
 
        set the itemdelimiter = "\"
