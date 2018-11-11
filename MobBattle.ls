@@ -18,6 +18,7 @@ Global abDefense, abParry, MyName
 
 on RunMobBattle(MyBattle, ThisMap, TheBattleFile, BattleDetailDat, StartingHireling )
 
+put "Running Mob Battle" & MyBattle & " TheBattleFile:" & TheBattleFile & "BattleDetail:" & BattleDetailDat & "StartHire:" & StartingHireling
  if char 1 of ThisMap = "@" then put "" into char 1 of ThisMap
 
  set the itemdelimiter = "_"
