@@ -1955,7 +1955,6 @@ on IncomingMessage (me, movie, group, user, fullMsg)
 	 "CurrencyDrop":
       CurrencyDrop(me, movie, group, user, fullmsg)
 	
-	CurrencyDrop
    "iExch":
     iExch(me, movie, group, user, fullmsg)
 
