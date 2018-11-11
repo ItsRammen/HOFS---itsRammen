@@ -952,13 +952,15 @@ on LoadChar2(me, movie, group, user, fullmsg)
        AddProp PlayerHungers, Symbol(MyName), MyHunger
        User.sendMessage("HereAmCond", MyCCFile, 0, FALSE, user.name)
 	
-       if CurrencyUpdate = FALSE then
+     if CurrencyUpdate = FALSE then
 	   
 	  --- CurrencyDrop(me, movie, group, user, fullmsg)
 	   put "Doing Currency Update for " & user.name
 
 	   set ConditionsFile = GetProp(PlayerConds, Symbol(MyName))
        set MyCharFile = GetProp(PlayerFiles, Symbol(MyName))
+	   set TheBank = file("DAT\BANK\" & MyName & ".txt").read
+	   put TheBank
 	   set ShouldWeRemove = FALSE
        set the itemdelimiter = "|"
        set MyInv = item 2 of MyCharFile
@@ -971,9 +973,33 @@ on LoadChar2(me, movie, group, user, fullmsg)
 	   put Cur
 	   set the itemdelimiter = "|"
 	   set TheAmount = item 3 of Cur
+	   set the itemdelimiter = ":"
+	   set CurrentBalance = item 1 of TheBank
+	   put CurrentBalance 
+	   put TheAmount
+       set CurrentBalance = TheAmount + CurrentBalance
+	   put "new Balance is:" & CurrentBalance
+	   set MyBalanace = string(CurrentBalance)
+	   put "the bank is:" & TheBank
+	   set the itemdelimiter = ":"
+	   put "" into item TheItemPos of ConditionsFile
+	   put "" into item TheItemPos of MyInv
+	  SetProp PlayerFiles, Symbol(MyName), MyCharFile
+      SetProp PlayerConds, Symbol(MyName), ConditionsFile
+      User.sendMessage("HereAmInv", MyInv, 0, FALSE, user.name)
+      User.sendMessage("HereAmCond", ConditionsFile, 0, FALSE, user.name)
+       set the itemdelimiter = "."
+	  set MyCurItemAmnt = item 1 of MyBalanace 
+	  set TheBank = file("DAT\BANK\" & MyName & ".txt").read
+	  put TheBank
+      set the itemdelimiter = ":"
+      put MyCurItemAmnt into item 1 of TheBank
+	  put TheBank
+      file("" & SrvPath & "NewWorldsOnlineServer\DAT\BANK\" & MyName & ".txt").write(TheBank)
 	   end if 
        end repeat
-
+	 
+ 
 	   
 	   
 	   
