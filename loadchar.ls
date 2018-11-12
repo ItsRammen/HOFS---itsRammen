@@ -952,16 +952,17 @@ on LoadChar2(me, movie, group, user, fullmsg)
        AddProp PlayerHungers, Symbol(MyName), MyHunger
        User.sendMessage("HereAmCond", MyCCFile, 0, FALSE, user.name)
 	
+     set CurrencyUpdate = TRUE
+  
      if CurrencyUpdate = FALSE then
 	   
 	  --- CurrencyDrop(me, movie, group, user, fullmsg)
 	   put "Doing Currency Update for " & user.name
-
+      ---- Silver
 	   set ConditionsFile = GetProp(PlayerConds, Symbol(MyName))
        set MyCharFile = GetProp(PlayerFiles, Symbol(MyName))
 	   set TheBank = file("DAT\BANK\" & MyName & ".txt").read
 	   put TheBank
-	   set ShouldWeRemove = FALSE
        set the itemdelimiter = "|"
        set MyInv = item 2 of MyCharFile
        set MyCharFile = item 1 of MyCharFile
@@ -998,6 +999,8 @@ on LoadChar2(me, movie, group, user, fullmsg)
       file("" & SrvPath & "NewWorldsOnlineServer\DAT\BANK\" & MyName & ".txt").write(TheBank)
 	   end if 
        end repeat
+	  ----- Gold
+
 	 
  
 	   
