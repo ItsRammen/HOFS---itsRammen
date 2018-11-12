@@ -3077,23 +3077,43 @@ end
    User.sendMessage("BANKED", BANKED, 0, FALSE, user.name)
  ---  put "we banked:" & Banked
    -----------------
- --- if xi < 31 then
- ---    set the itemdelimiter = ":"
- ---   set MyGoldAmntCond = item xi of MyConds
- ---   set the itemdelimiter = "|"
- ---   set MyGld = integer(item 3 of MyGoldAmntCond)
- ---   set MyGld = MyGld + ThePrice
- ---  put MyGld into item 3 of MyGoldAmntCond
- ---   set the itemdelimiter = ":"
- ---   put MyGoldAmntCond into item xi of MyConds
-    
----   else
 
----   set the itemdelimiter = ":"
- ---  put Currency into item WhichSlowToPutGoldIn of MyInv
- ---  set MyGoldAmntCond = "1|0|" & ThePrice
- ---  put MyGoldAmntCond into item WhichSlowToPutGoldIn of MyConds
- -- end if
+   ----- currency sell
+   set TheItem = ShopItem
+   if TheItem = "Gold" then set IsCurr = TRUE
+   if TheItem = "Silver" then set IsCurr = TRUE
+   if TheItem = "Rubies" then set IsCurr = TRUE
+   if TheItem = "Emeralds" then set IsCurr = TRUE
+   if TheItem = "Diamonds" then set IsCurr = TRUE
+   if TheItem = "Gems" then set IsCurr = TRUE
+   if IsCurr = TRUE then 
+   file("" & SrvPath & "NewWorldsOnlineServer\DAT\BANK\" & MyName & ".txt").write(BankFile)
+   set the itemdelimiter = "|"
+   set Amount = ThePrice
+	  put "We've got a currency" 
+   if TheItem = "Silver" then set WhichSlot = 1
+   if TheItem = "Gold" then set WhichSlot = 2
+   if TheItem = "Rubies" then set WhichSlot = 3
+   if TheItem = "Emeralds" then set WhichSlot = 4
+   if TheItem = "Diamonds" then set WhichSlot = 5
+   if TheItem = "Gems" then set WhichSlot = 6
+   set BankFile = file("" & SrvPath & "NewWorldsOnlineServer\DAT\BANK\" & MyName & ".txt").read
+   set the itemdelimiter = ":"
+   set TheCurr = item WhichSlot of BankFile
+   set GoldAmount2 = TheCurr - Amount
+   set the itemdelimiter = "."
+   set MyBalanace = string(GoldAmount2)
+   set MyCurItemAmnt = item 1 of MyBalanace 
+   set the itemdelimiter = ":"
+   put MyCurItemAmnt into item WhichSlot of BankFile
+   file("" & SrvPath & "NewWorldsOnlineServer\DAT\BANK\" & MyName & ".txt").write(BankFile)
+   set Banked = BankFile
+   myPMovie.sendMessage(MyName , "BANKED", BANKED)
+   myPMovie.sendMessage(MyName , "sqa", "* " & Amount & " " & TheItem & " has been added to your currency pouch.")
+
+	  exit 
+	 end if 
+----- currency sell end
 
 
   set the itemdelimiter = "|"
@@ -3280,7 +3300,43 @@ on MobBuy(me, movie, group, user, fullmsg)
   if gItemDat contains "\Stackable=TRUE" then set StackThisOne = TRUE
 
   set the itemdelimiter = ":"
+  
+----- currency buy
+   set TheItem = ShopItem
+   if TheItem = "Gold" then set IsCurr = TRUE
+   if TheItem = "Silver" then set IsCurr = TRUE
+   if TheItem = "Rubies" then set IsCurr = TRUE
+   if TheItem = "Emeralds" then set IsCurr = TRUE
+   if TheItem = "Diamonds" then set IsCurr = TRUE
+   if TheItem = "Gems" then set IsCurr = TRUE
+   if IsCurr = TRUE then 
+   file("" & SrvPath & "NewWorldsOnlineServer\DAT\BANK\" & MyName & ".txt").write(BankFile)
+   set the itemdelimiter = "|"
+   set Amount = ThePrice
+	  put "We've got a currency" 
+   if TheItem = "Silver" then set WhichSlot = 1
+   if TheItem = "Gold" then set WhichSlot = 2
+   if TheItem = "Rubies" then set WhichSlot = 3
+   if TheItem = "Emeralds" then set WhichSlot = 4
+   if TheItem = "Diamonds" then set WhichSlot = 5
+   if TheItem = "Gems" then set WhichSlot = 6
+   set BankFile = file("" & SrvPath & "NewWorldsOnlineServer\DAT\BANK\" & MyName & ".txt").read
+   set the itemdelimiter = ":"
+   set TheCurr = item WhichSlot of BankFile
+   set GoldAmount2 = TheCurr + Amount
+   set the itemdelimiter = "."
+   set MyBalanace = string(GoldAmount2)
+   set MyCurItemAmnt = item 1 of MyBalanace 
+   set the itemdelimiter = ":"
+   put MyCurItemAmnt into item WhichSlot of BankFile
+   file("" & SrvPath & "NewWorldsOnlineServer\DAT\BANK\" & MyName & ".txt").write(BankFile)
+   set Banked = BankFile
+   myPMovie.sendMessage(MyName , "BANKED", BANKED)
+   myPMovie.sendMessage(MyName , "sqa", "* " & Amount & " " & TheItem & " has been added to your currency pouch.")
 
+	  exit 
+	 end if 
+----- currency buy end
 
  if ShopItem contains "Level " then
     set WhichHirelingLevel = integer(word 2 of ShopItem)
